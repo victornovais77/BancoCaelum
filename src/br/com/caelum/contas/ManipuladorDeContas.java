@@ -15,7 +15,7 @@ public class ManipuladorDeContas {
 
 		if (tipo.equals("Conta Corrente")) {
 			this.conta = new ContaCorrente();
-		} else if (tipo.equals("Conta PoupanÃ§a")) {
+		} else if (tipo.equals("Conta Poupança")) {
 			this.conta = new ContaPoupanca();
 		}
 
@@ -32,11 +32,7 @@ public class ManipuladorDeContas {
 
 	public void saca(Evento evento) {
 		double valor = evento.getDouble("valorOperacao");
-		// if(this.conta.getTipo().equals("Conta Corrente")){
-		// this.conta.saca(valor + 0.10);
-		// }else {
 		this.conta.saca(valor);
-		// }
 	}
 
 	public void transfere(Evento evento) {

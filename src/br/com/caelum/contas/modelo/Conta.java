@@ -1,7 +1,5 @@
 package br.com.caelum.contas.modelo;
 
-import br.com.caelum.contas.exception.SaldoInsuficienteException;
-
 /**
  * 
  * @author oo7297
@@ -57,22 +55,17 @@ public abstract class Conta {
 	 *            valor a ser sacado da conta
 	 * @return true se sacou
 	 */
-	public boolean saca(double valor) {
-		if (valor > 0 && saldo >= valor) {
-			saldo -= valor;
-			System.out.println("Sacado");
-			return true;
-		} else {
-			System.out.println("erro ao sacar");
-			throw new SaldoInsuficienteException(valor);
+	public void saca(double valor) {
+		if (saldo > valor) {
+			this.saldo -= valor;
+		}else {
+			throw new IllegalArgumentException("Voce tentou depositar um valor Menor que 0");
 		}
-		
-
 	}
 
 	@Override
 	public String toString() {
-		return "Titular: " + titular;
+		return titular;
 	}
 
 	public void deposita(double valor) {
